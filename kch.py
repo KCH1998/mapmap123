@@ -2,6 +2,7 @@ import streamlit as st
 from streamlit.components.v1 import html
 import requests
 
+# Streamlit secrets에서 API 키 가져오기
 KAKAO_API_KEY = st.secrets["KAKAO_API_KEY"]
 KAKAO_REST_API_KEY = st.secrets["KAKAO_REST_API_KEY"]
 NAVER_CLIENT_ID = st.secrets["NAVER_CLIENT_ID"]
