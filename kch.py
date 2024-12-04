@@ -1,12 +1,17 @@
 import streamlit as st
 from streamlit.components.v1 import html
 import requests
+from dotenv import load_dotenv
+import os
 
-KAKAO_API_KEY = "d693cf4169b24f12ec19b0a6713f58f4"
-KAKAO_REST_API_KEY = "8741ff3930e0c669e15cf0781c95c8a6"
-NAVER_CLIENT_ID = "SJEuYQimlmeqOEFBVP8_"
-NAVER_CLIENT_SECRET = "jdr3EuEGKg"
-GOOGLE_API_KEY = "AIzaSyDF2PjlBkUupABpDhmte4xXfdWH0kLTaUk"
+# .env 파일에서 환경 변수 로드
+load_dotenv()
+
+KAKAO_API_KEY = os.getenv("KAKAO_API_KEY")
+KAKAO_REST_API_KEY = os.getenv("KAKAO_REST_API_KEY")
+NAVER_CLIENT_ID = os.getenv("NAVER_CLIENT_ID")
+NAVER_CLIENT_SECRET = os.getenv("NAVER_CLIENT_SECRET")
+GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
 
 def fetch_coordinates(address):
     url = "https://dapi.kakao.com/v2/local/search/address.json"
@@ -93,7 +98,7 @@ def kakao_map_html(lat, lon, places):
 
     return f"""
     <div id="map" style="width:100%;height:700px; border-radius: 10px; box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);"></div>
-    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey={KAKAO_API_KEY}"></script>
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey={KAKAO_API_KEY}&libraries=services"></script>
     <script>
         var container = document.getElementById('map');
         var options = {{
@@ -137,7 +142,7 @@ if restaurants:
         <h4 class="card-title" style="font-weight: bold; color: #007BFF;">{restaurant['place_name']}</h4>
         <p class="card-text"><strong>주소:</strong> {restaurant['road_address_name']}</p>
         <p class="card-text"><strong>전화번호:</strong> {restaurant['phone']}</p>
-        <p class="card-text"><strong>광고 없는 후기:</strong></p>
+        <p class="card-text"><strong>후기:</strong></p>
         <ul>
             {''.join([f'<li>{review["description"]} <a href="{review["link"]}" target="_blank" style="color: #007BFF; text-decoration: underline;">후기 자세히 보기</a></li>' for review in filtered_reviews[:3]])}
         </ul>
