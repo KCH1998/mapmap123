@@ -7,11 +7,11 @@ import os
 # .env 파일에서 환경 변수 로드
 load_dotenv()
 
-KAKAO_API_KEY = os.getenv("KAKAO_API_KEY")
-KAKAO_REST_API_KEY = os.getenv("KAKAO_REST_API_KEY")
-NAVER_CLIENT_ID = os.getenv("NAVER_CLIENT_ID")
-NAVER_CLIENT_SECRET = os.getenv("NAVER_CLIENT_SECRET")
-GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
+KAKAO_API_KEY = st.secrets("KAKAO_API_KEY")
+KAKAO_REST_API_KEY = st.secrets("KAKAO_REST_API_KEY")
+NAVER_CLIENT_ID = st.secrets("NAVER_CLIENT_ID")
+NAVER_CLIENT_SECRET = st.secrets("NAVER_CLIENT_SECRET")
+GOOGLE_API_KEY = st.secrets("GOOGLE_API_KEY")
 
 def fetch_coordinates(address):
     url = "https://dapi.kakao.com/v2/local/search/address.json"
