@@ -1,9 +1,6 @@
 import streamlit as st
 from streamlit.components.v1 import html
 import requests
-import os
-
-
 
 KAKAO_API_KEY = st.secrets["KAKAO_API_KEY"]
 KAKAO_REST_API_KEY = st.secrets["KAKAO_REST_API_KEY"]
