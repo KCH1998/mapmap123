@@ -1,11 +1,9 @@
 import streamlit as st
 from streamlit.components.v1 import html
 import requests
-from dotenv import load_dotenv
 import os
 
-# .env 파일에서 환경 변수 로드
-load_dotenv()
+
 
 KAKAO_API_KEY = st.secrets("KAKAO_API_KEY")
 KAKAO_REST_API_KEY = st.secrets("KAKAO_REST_API_KEY")
