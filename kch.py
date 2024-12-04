@@ -10,6 +10,10 @@ NAVER_CLIENT_SECRET = st.secrets["NAVER_CLIENT_SECRET"]
 GOOGLE_API_KEY = st.secrets["GOOGLE_API_KEY"]
 
 def fetch_coordinates(address):
+    if not address:
+        st.error("주소를 입력해주세요.")
+        return None, None
+
     url = "https://dapi.kakao.com/v2/local/search/address.json"
     headers = {"Authorization": f"KakaoAK {KAKAO_REST_API_KEY}"}
     params = {"query": address}
